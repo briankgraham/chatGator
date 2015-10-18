@@ -3,10 +3,10 @@ var bodyParse = require('body-parser');
 
 var app = express();
 
-app.get('/', function (req, res, next) {
-  res.sendFile(__dirname + '/client/index.html');
-});
+require('./config/middleware')(app, express);
 
 app.listen(8000, function () {
   console.log('listening');
 });
+
+module.exports = app;

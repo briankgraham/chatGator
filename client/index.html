@@ -2,7 +2,7 @@
 <html ng-app="app">
 <head>
   <title>chatApp</title>
-  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css"
+  <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
 </head>
 <body>
   <nav class="navbar navbar-default">
@@ -12,18 +12,20 @@
         <li><a href="/#/register">Register</a></li>
         <li><a href="/#/login">Login</a></li>
       </ul>
-      <p ng-if="currentUser" class="navbar-text navbar-right"> Signed in as {{currentUser.username}}</p>
+      <p ng-if="currentUser" class="navbar-text navbar-right">Signed in as {{currentUser.username}}</p>
     </div>
   </nav>
   <div class="container">
-  <form>
-    <input type="text" placeholder="username">
-    <input type="text" placeholder="password">
-    <button>Press Me</button>
-  </form>
+    <form ng-controller='userController'>
+      <input type="text" ng-model="username" placeholder="username">
+      <input type="text" ng-model="password" placeholder="password">
+      <button>Press Me</button>
+    </form>
   </div>
- <script src="lib/angular.min.js"></script>
- <script src="lib/angular-ui-router.min.js"></script>
+<script src="lib/angular.min.js"></script>
+<!-- <script src="lib/angular.js"></script> -->
+<script src="lib/angular-ui-router.min.js"></script>
 <script src="ng/app.js"></script>
+<script src="ng/userController.js"></script>
 </body>
 </html>

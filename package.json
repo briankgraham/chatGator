@@ -1,10 +1,13 @@
 {
   "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^2.10.2",
     "body-parser": "^1.14.1",
     "express": "^4.13.3",
     "gulp": "^3.9.0",
     "gulp-nodemon": "^2.0.4",
+    "jwt-simple": "^0.3.1",
+    "mongoose": "^4.2.6",
     "morgan": "^1.6.1"
   }
 }

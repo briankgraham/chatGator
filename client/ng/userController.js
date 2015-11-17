@@ -1,6 +1,10 @@
 angular.module('app')
 .controller('userController', function ($scope, $location, Auth) {
   $scope.user = {};
+  $scope.$on('login', function (whatsThis, user) {
+    console.log('werhere')
+    $scope.currentUser = user;
+  });
   $scope.signup = function () {
     Auth.signup($scope.user).then(function (result) {
       console.log('frontend:', result);
@@ -11,6 +15,7 @@ angular.module('app')
     Auth.signin($scope.user).then(function (result) {
       localStorage.setItem('id', result.data.token);
       localStorage.setItem('name', result.data.username);
+      $scope.$emit('login', result.data.username);
       $location.path('/home');
     });
   };

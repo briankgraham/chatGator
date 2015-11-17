@@ -17,7 +17,7 @@ angular.module('app', ['ngRoute'])
     controller: 'userController'
   })
   .otherwise({
-    redirectTo: '/signup'
+    redirectTo: '/login'
   });
 
   $httpProvider.interceptors.push('AddTokens');

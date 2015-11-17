@@ -1,5 +1,6 @@
 var morgan = require('morgan');
 var bodyParser = require('body-parser');
+var helpers = require('./helpers.js');
 
 module.exports = function (app, express) {
   var userRouter = express.Router();
@@ -13,7 +14,8 @@ module.exports = function (app, express) {
   app.use('/api/users', userRouter);
 
   app.use('/api/posts', postRouter);
-
+  app.use(helpers.errorLogger);
+  app.use(helpers.errorHandler);
   // add requires for userRoutes and postRoutes, inject the routers into each
   require('../server/users/userRoutes.js')(userRouter);
 

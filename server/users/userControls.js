@@ -15,17 +15,22 @@ module.exports = {
           username: username,
           password: password
         }).then(function (newUser) {
-          if (newUser) console.log('success userstored!', newUser);
+          if (newUser) {
+            console.log('success userstored!', newUser);
+            var token = jwt.encode(newUser, 'secret');
+            res.json({token: token});
+          }
         })
         .catch(function (err) {
           console.log('something wrong', err);
+          res.send(500);
         });
       }
     });
   },
 
   signin: function (req, res, next) {
-    
+
   }
 
 };

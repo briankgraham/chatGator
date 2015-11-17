@@ -16,17 +16,24 @@
     </div>
   </nav>
   <div class="container">
-    <form ng-controller='userController'>
-      <input type="text" ng-model="username" placeholder="username">
-      <input type="text" ng-model="password" placeholder="password">
-      <button>Press Me</button>
+    <form ng-controller='userController' ng-submit='signin()'>
+      <input type="text" ng-model="user.username" placeholder="username">
+      <input type="password" ng-model="user.password" placeholder="password">
+      <button>LOG IN</button>
+    </form>
+  </div>
+  <div class="container">
+    <form ng-controller='userController' ng-submit='signup()'>
+      <input type="text" ng-model="user.username" placeholder="username">
+      <input type="password" ng-model="user.password" placeholder="password">
+      <button>SIGN UP</button>
     </form>
   </div>
 <script src="lib/angular.min.js"></script>
-<!-- <script src="lib/angular.js"></script> -->
 <script src="lib/angular-route.min.js"></script>
 <script src="lib/angular-ui-router.min.js"></script>
 <script src="ng/app.js"></script>
 <script src="ng/userController.js"></script>
+<script src="ng/factories.js"></script>
 </body>
 </html>

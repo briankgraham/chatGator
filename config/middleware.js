@@ -15,5 +15,6 @@ module.exports = function (app, express) {
   app.use('/api/posts', postRouter);
 
   // add requires for userRoutes and postRoutes, inject the routers into each
+  require('../server/users/userRoutes.js')(userRouter);
 
 };

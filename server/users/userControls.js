@@ -18,7 +18,10 @@ module.exports = {
           if (newUser) {
             console.log('success userstored!', newUser);
             var token = jwt.encode(newUser, 'secret');
-            res.json({token: token});
+            res.json({
+              token: token,
+              username: user.username
+            });
           }
         })
         .catch(function (err) {
@@ -30,7 +33,32 @@ module.exports = {
   },
 
   signin: function (req, res, next) {
-
+    var username = req.body.username;
+    var password = req.body.password;
+    User.findOne({username: username}).exec()
+    .then(function (user) {
+      if (user) {
+        user.comparePass(password)
+          .then(function (found) {
+            if (found) {
+              console.log('user OK!', found);
+              var token = jwt.encode(user, 'secret');
+              res.json({
+                token: token,
+                username: user.username
+              });
+            } else {
+              res.send(404);
+            }
+          })
+          .catch(function (err) {
+            console.log('something wrong', err);
+            res.send(500);
+          });
+      } else {
+        res.send(404);
+      }
+    });
   }
 
 };

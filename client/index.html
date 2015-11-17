@@ -8,32 +8,23 @@
   <nav class="navbar navbar-default">
     <div class="container">
       <ul class="nav navbar-nav">
-        <li><a href="/#/">Posts</a></li>
-        <li><a href="/#/register">Register</a></li>
+        <li><a href="/#/home">Posts</a></li>
+        <li><a href="/#/signup">Register</a></li>
         <li><a href="/#/login">Login</a></li>
       </ul>
       <p ng-if="currentUser" class="navbar-text navbar-right">Signed in as {{currentUser.username}}</p>
     </div>
   </nav>
-  <div class="container">
-    <form class="form-group" ng-controller='userController' ng-submit='signin()'>
-      <input type="text" ng-model="user.username" placeholder="username">
-      <input type="password" ng-model="user.password" placeholder="password">
-      <button class='btn btn-success'>LOG IN</button>
-    </form>
-  </div>
-  <div class="container">
-    <form ng-controller='userController' ng-submit='signup()'>
-      <input type="text" ng-model="user.username" placeholder="username">
-      <input type="password" ng-model="user.password" placeholder="password">
-      <button class='btn btn-primary'>SIGN UP</button>
-    </form>
-  </div>
+  <ng-view>
+  </ng-view>
+    
+    
 <script src="lib/angular.min.js"></script>
 <script src="lib/angular-route.min.js"></script>
 <script src="lib/angular-ui-router.min.js"></script>
 <script src="ng/app.js"></script>
 <script src="ng/userController.js"></script>
+<script src="ng/postController.js"></script>
 <script src="ng/factories.js"></script>
 </body>
 </html>

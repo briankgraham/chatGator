@@ -9,6 +9,7 @@ angular.module('app')
     })
     .then(function (res) {
       console.log(res);
+      return res;
     });
   };
 
@@ -19,6 +20,7 @@ angular.module('app')
       data: data
     })
     .then(function (result) {
+      console.log(result);
       return result;
     });
   };
@@ -38,11 +40,4 @@ angular.module('app')
     isAuth: isAuth,
     signout: signout
   };
-})
-
-.factory('AddTokens', function ($window) {
-
-})
-.run(function ($rootScope, $location) {
-
 });

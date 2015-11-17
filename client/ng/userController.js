@@ -1,6 +1,5 @@
 angular.module('app')
 .controller('userController', function ($scope, $location, Auth) {
-  console.log("hey");
   $scope.user = {};
   $scope.signup = function () {
     Auth.signup($scope.user).then(function (result) {
@@ -10,7 +9,9 @@ angular.module('app')
   };
   $scope.signin = function () {
     Auth.signin($scope.user).then(function (result) {
-      console.log('frontend:');
+      localStorage.setItem('id', result.data.token);
+      localStorage.setItem('name', result.data.username);
+      $location.path('/home');
     });
   };
 

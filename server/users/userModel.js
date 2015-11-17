@@ -22,9 +22,9 @@ userSchema.methods.comparePass = function (possPass) {
   var savedPass = this.password;
   return bcrypt.compareAsync(possPass, savedPass).then(function (result) {
     if (!result) {
-      console.log('not found', result);
+      return false;
     } else {
-      console.log('found', result);
+      return true;
     }
   });
 };

@@ -1,6 +1,15 @@
 <div class="container">
   <form class="form-group" ng-submit='submit()'>
-    <input type="text" ng-model="post.message" placeholder="send a message">
-    <button class='btn btn-success'>postIT</button>
+    <input class="form-control" type="text" ng-model="post.message" placeholder="send a message">
+      <span class="btn-group">
+        <button class='btn btn-success'>postIT</button>
+      </span>
   </form>
+  <ul class="list-group">
+    <li class="list-group-item" ng-repeat="post in post.totalPosts | orderBy: '-created'">
+      <span><a href='#'>@{{post.username}}</a></span>
+      <span>{{post.body}}</span>
+      <span>{{post.created}}</span> 
+    </li>
+  </ul>
 </div>

@@ -18,5 +18,6 @@ module.exports = function (app, express) {
   app.use(helpers.errorHandler);
   // add requires for userRoutes and postRoutes, inject the routers into each
   require('../server/users/userRoutes.js')(userRouter);
+  require('../server/posts/postRoutes.js')(postRouter);
 
 };

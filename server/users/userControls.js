@@ -20,7 +20,7 @@ module.exports = {
             var token = jwt.encode(newUser, 'secret');
             res.json({
               token: token,
-              username: user.username
+              username: newUser.username
             });
           }
         })
@@ -60,5 +60,4 @@ module.exports = {
       }
     });
   }
-
 };

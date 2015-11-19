@@ -12,7 +12,10 @@
         <li><a href="/#/signup">Register</a></li>
         <li><a href="/#/login">Login</a></li>
       </ul>
-      <p ng-if="currentUser" class="navbar-text navbar-right">Signed in as {{currentUser.username}}</p>
+      <p ng-if="currentUser" class="navbar-text navbar-right">
+      Signed in as {{currentUser.username}}
+        <button class="btn btn-default" ng-click="logOut()">Log Out</button>
+      </p>
     </div>
   </nav>
   <ng-view>

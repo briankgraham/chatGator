@@ -13,12 +13,21 @@ var postSchema = mongoose.Schema({
     required: true
   },
 
+  room: {
+    type: String,
+    default: "Lobby"
+  },
+
   created: {
-    type: Date,
-    default: Date.now(),
-    required: true
+    type: Date
   }
 
+});
+
+postSchema.pre('save', function (next) {
+  var post = this;
+  post.created = new Date();
+  next();
 });
 
 module.exports = mongoose.model('posts', postSchema);

@@ -8,7 +8,6 @@ angular.module('app')
       data: data
     })
     .then(function (res) {
-      console.log(res);
       return res;
     });
   };
@@ -20,7 +19,6 @@ angular.module('app')
       data: data
     })
     .then(function (result) {
-      console.log(result);
       return result;
     });
   };
@@ -34,10 +32,30 @@ angular.module('app')
     $location.path('/signin');
   };
 
+  var getPosts = function () {
+    return $http({
+      method: 'GET',
+      url: '/api/posts/all'
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  };
+
+  var sendPost = function (data) {
+    return $http({
+      method: 'POST',
+      url: '/api/posts/new',
+      data: data
+    });
+  };
+
   return {
     signin: signin,
     signup: signup,
     isAuth: isAuth,
-    signout: signout
+    signout: signout,
+    getPosts: getPosts,
+    sendPost: sendPost
   };
 });

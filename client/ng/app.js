@@ -34,6 +34,11 @@ angular.module('app', ['ngRoute'])
     }
   };
 })
-.run(function ($rootScope, $location) {
-
+.run(function ($rootScope, $location, Auth) {
+  // Checks if next route is authorized to use
+  $rootScope.$on('$routeChangeStart', function (evt, next, current) {
+    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+      $location.path('/');
+    }
+  });
 });

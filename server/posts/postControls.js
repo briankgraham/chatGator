@@ -40,5 +40,17 @@ module.exports = {
       .then(function (posts) {
         res.send(posts);
       });
+  },
+
+  getUserPosts: function (req, res, next) {
+    var username = req.params.user;
+    if (username) {
+      Post.find({username: username})
+        .then(function (posts) {
+          res.send(posts);
+        });
+    } else {
+      res.sendStatus(404);
+    }
   }
 };

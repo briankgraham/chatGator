@@ -6,6 +6,14 @@ angular.module('app')
     $scope.$emit('login', localStorage.getItem('name'));
   }
 
+  // Helper function to change dates and create $scope array
+  var createPostArray = function (posts) {
+    posts.forEach(function (post) {
+      post.created = new Date(post.created).toLocaleString();
+    });
+    $scope.post.totalPosts = posts;
+  };
+
   $scope.submit = function () {
     var user = {
       username: localStorage.getItem('name'),
@@ -13,23 +21,28 @@ angular.module('app')
     };
     Auth.sendPost(user)
       .then(function (result) {
-        console.log('submitted', result);
         Auth.getPosts()
           .then(function (posts) {
             $scope.post.message = '';
-            posts.forEach(function (post) {
-              post.created = new Date(post.created).toLocaleString();
-            });
-            $scope.post.totalPosts = posts;
+            createPostArray(posts);
           });
       });
   };
 
   $scope.getPosts = function () {
     Auth.getPosts()
-      .then(function (result) {
-        console.log('we here:', result);
+      .then(function (posts) {
+        createPostArray(posts);
       });
   };
 
+  $scope.getUserPosts = function () {
+    Auth.getUserPosts(this.post.username)
+      .then(function (posts) {
+        createPostArray(posts);
+      });
+  };
+
+  $scope.getPosts();
 });
+

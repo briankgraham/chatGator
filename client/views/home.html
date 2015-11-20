@@ -4,10 +4,14 @@
       <span class="btn-group">
         <button class='btn btn-success'>postIT</button>
       </span>
+    <input class="form-control" type="text" ng-model="post.room" placeholder="create a room">
+      <span class="btn-group">
+        <button class='btn btn-danger'>roomIT</button>
+      </span>
   </form>
   <ul class="list-group">
     <li class="list-group-item" ng-repeat="post in post.totalPosts | orderBy: '-created'">
-      <span><a href='#'>@{{post.username}}</a></span>
+      <span><a href="" ng-click="getUserPosts()">@{{post.username}}</a></span>
       <span>{{post.body}}</span>
       <span>{{post.created}}</span> 
     </li>

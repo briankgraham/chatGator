@@ -50,7 +50,18 @@ angular.module('app')
     });
   };
 
+  var getUserPosts = function (user) {
+    return $http({
+      method: 'GET',
+      url: '/api/posts/' + user
+    })
+    .then(function (resp) {
+      return resp.data;
+    });
+  }; 
+
   return {
+    getUserPosts: getUserPosts,
     signin: signin,
     signup: signup,
     isAuth: isAuth,

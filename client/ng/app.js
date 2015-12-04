@@ -34,11 +34,17 @@ angular.module('app', ['ngRoute'])
     }
   };
 })
-.run(function ($rootScope, $location, Auth) {
+.run(function ($rootScope, $location, $route, Auth) {
   // Checks if next route is authorized to use
+
   $rootScope.$on('$routeChangeStart', function (evt, next, current) {
-    if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) {
+    // checks to see if there was a legit path that requires authentication, and redirects if not authorized
+    if ($route.routes[next.originalPath] && $route.routes[next.originalPath].authenticate && !Auth.isAuth()) {
       $location.path('/');
     }
+    // if (next.$$route && next.$$route.authenticate && !Auth.isAuth()) { --> old Method using private variables
+    //   $location.path('/');
+    // }
   });
 });
+

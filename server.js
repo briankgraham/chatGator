@@ -8,7 +8,7 @@ mongoose.connect('mongodb://localhost/chatClient');
 
 require('./config/middleware')(app, express);
 
-app.listen(8000, function () {
+app.listen(8080, function () {
   console.log('listening');
 });
 
